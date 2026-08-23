@@ -1,0 +1,105 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(11, 14, 23, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.35s ease, background 0.35s ease;
+}
+
+.header.scrolled {
+  border-bottom: 1px solid var(--line);
+  background: rgba(11, 14, 23, 0.85);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  max-width: 1180px;
+  margin: 0 auto;
+  transition: padding 0.35s ease;
+}
+
+.header.scrolled .nav {
+  padding: 14px 28px;
+}
+
+.logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 12px 2px var(--cyan);
+  animation: blink 2.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.navLinks {
+  display: flex;
+  gap: 34px;
+  align-items: center;
+}
+
+.navLinks a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.25s ease;
+  position: relative;
+}
+
+.navLinks a:hover {
+  color: var(--text);
+}
+
+.navLinks a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--cyan);
+  transition: width 0.25s ease;
+}
+
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+.navCta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .navLinks {
+    display: none;
+  }
+}

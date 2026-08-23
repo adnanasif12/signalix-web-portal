@@ -1,0 +1,88 @@
+.process {
+  background: var(--bg-soft);
+}
+
+.secEyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: block;
+  color: var(--amber);
+}
+
+.secTitle {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+  letter-spacing: -0.02em;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.row::before {
+  content: "";
+  position: absolute;
+  top: 26px;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cyan), var(--violet), var(--coral), var(--amber));
+  opacity: 0.4;
+}
+
+.step {
+  position: relative;
+  padding-right: 20px;
+}
+
+.stepDot {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 2;
+}
+
+.step h4 {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 960px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 40px;
+  }
+  .row::before {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

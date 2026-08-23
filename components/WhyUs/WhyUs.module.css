@@ -1,0 +1,88 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.secEyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: block;
+  color: var(--coral);
+}
+
+.secTitle {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.item {
+  display: flex;
+  gap: 18px;
+}
+
+.num {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 38px;
+}
+
+.item h4 {
+  font-family: var(--display);
+  font-size: 1.08rem;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.item p {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.panel {
+  background: linear-gradient(160deg, var(--surface), var(--bg-soft));
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 36px;
+}
+
+.quoteMark {
+  font-family: var(--display);
+  font-size: 3.5rem;
+  color: var(--cyan);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.quote {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.who {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

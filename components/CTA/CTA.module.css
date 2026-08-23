@@ -1,0 +1,40 @@
+.ctaSection {
+  padding: 100px 0;
+}
+
+.ctaCard {
+  background: linear-gradient(120deg, rgba(0, 229, 199, 0.12), rgba(139, 127, 255, 0.12));
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  padding: 64px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaCard h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.ctaCard p {
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+
+.ctaBtns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .ctaCard {
+    padding: 44px 24px;
+  }
+}
