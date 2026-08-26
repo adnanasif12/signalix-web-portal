@@ -118,11 +118,52 @@
   margin-bottom: 36px;
 }
 
+.trustLine {
+  font-size: 0.85rem;
+  color: var(--cyan);
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+
 .heroCtas {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 44px;
+  margin-bottom: 26px;
+}
+
+.offerBadge {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  background: linear-gradient(100deg, rgba(255, 184, 77, 0.14), rgba(255, 93, 122, 0.1));
+  border: 1px solid rgba(255, 184, 77, 0.35);
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 30px;
+}
+
+.offerText {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.offerText strong {
+  color: var(--amber);
+  font-family: var(--display);
+}
+
+.offerCta {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--amber);
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.offerCta:hover {
+  opacity: 0.75;
 }
 
 .heroTags {

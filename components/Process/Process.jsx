@@ -6,7 +6,7 @@ const STEPS = [
     n: "01",
     accent: "var(--cyan)",
     title: "Discover",
-    desc: "We learn your business, audience, and goals in a short discovery call.",
+    desc: "Free initial consultation to understand your business, audience, and goals.",
   },
   {
     n: "02",

@@ -14,6 +14,9 @@ export default function Footer() {
               A full-service IT &amp; digital agency helping small businesses
               build, maintain, and grow their online presence.
             </p>
+            <p className={styles.remoteLine}>
+              Remote agency serving Africa &amp; worldwide.
+            </p>
           </div>
           <div className={styles.footerCol}>
             <h5>Services</h5>
@@ -30,7 +33,7 @@ export default function Footer() {
           <div className={styles.footerCol}>
             <h5>Get in Touch</h5>
             <a href="mailto:hello@signalix.agency">hello@signalix.agency</a>
-            <a href="tel:+8800000000">+880 000-000000</a>
+            <a href="tel:+8801636028679">+880 1636-028679</a>
           </div>
         </div>
 

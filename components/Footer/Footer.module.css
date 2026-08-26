@@ -35,6 +35,13 @@
   max-width: 280px;
 }
 
+.remoteLine {
+  color: var(--cyan) !important;
+  font-weight: 600;
+  font-size: 0.82rem !important;
+  margin-top: 10px !important;
+}
+
 .footerCol h5 {
   font-size: 0.82rem;
   text-transform: uppercase;

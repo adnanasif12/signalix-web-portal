@@ -48,9 +48,12 @@ export default function Hero() {
             ignore.
           </h1>
           <p className={styles.heroSub}>
-            Signalix is a full-service IT &amp; digital agency — we design,
-            build, and grow your online presence, from a five-page website to
-            the campaigns that fill it with customers.
+            Signalix is a remote full-service IT &amp; digital agency helping
+            businesses across Africa and worldwide build, maintain, and grow
+            their online presence.
+          </p>
+          <p className={styles.trustLine}>
+            Serving businesses across Africa &amp; beyond — fully remote.
           </p>
           <div className={styles.heroCtas}>
             <a href="#contact" className="btn btn-primary">
@@ -60,12 +63,22 @@ export default function Hero() {
               See Our Services
             </a>
           </div>
+
+          <div className={styles.offerBadge}>
+            <span className={styles.offerText}>
+              Special Starter Package: <strong>5-Page Website from $50</strong>
+            </span>
+            <a href="#services" className={styles.offerCta}>
+              Claim the $50 Offer →
+            </a>
+          </div>
+
           <div className={styles.heroTags}>
-            <span>Web Development</span>
-            <span>Website Maintenance</span>
-            <span>Video Editing</span>
+            <span>Website Development</span>
             <span>Digital Marketing</span>
             <span>Social Media Marketing</span>
+            <span>Website Maintenance</span>
+            <span>Video Editing</span>
           </div>
         </div>
 
@@ -96,8 +109,8 @@ export default function Hero() {
           <div className={styles.serviceMini}>
             <span className={styles.swatch} style={{ background: "var(--cyan)" }} />
             <span className={styles.txt}>
-              5-Page Website / App
-              <small>Landing site built to convert</small>
+              Business Website Development
+              <small>5-page site, starting from $50</small>
             </span>
           </div>
           <div className={styles.serviceMini}>

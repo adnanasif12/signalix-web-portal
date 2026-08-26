@@ -5,9 +5,10 @@ const SERVICES = [
   {
     num: "01 / Build",
     accent: "var(--cyan)",
-    title: "5-Page Landing Website / App",
-    desc: "A fast, responsive 5-page site or app landing page designed to explain your offer and convert visitors into leads.",
-    items: ["Home, About, Services, Portfolio, Contact", "Mobile-first & responsive design", "SEO-ready structure"],
+    title: "Business Website Development",
+    desc: "Professional, mobile-first websites designed around your business goals and built to convert visitors into enquiries.",
+    items: ["Starting from 5 pages", "Mobile-first & responsive design", "SEO-ready structure"],
+    offer: true,
     icon: (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="4" width="18" height="14" rx="2" />
@@ -46,7 +47,7 @@ const SERVICES = [
     num: "04 / Grow",
     accent: "var(--amber)",
     title: "Digital Marketing",
-    desc: "Search and paid campaigns built around real numbers — so every taka spent is a taka tracked.",
+    desc: "Search and paid campaigns built around real numbers — so every ad spend is tracked and measured.",
     items: ["SEO & Google Ads", "Meta & TikTok ad campaigns", "Monthly performance reports"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -73,7 +74,7 @@ const SERVICES = [
     num: "+ / Bundle",
     accent: "var(--cyan)",
     title: "Full Growth Package",
-    desc: "All five services combined into one monthly plan — built, maintained, and marketed under one roof.",
+    desc: "All five services combined into one monthly plan — built, maintained, and marketed under one roof. A single remote team for your website, content, marketing, and ongoing support.",
     items: ["Single point of contact", "Unified brand strategy", "Custom pricing on request"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -109,6 +110,11 @@ export default function Services() {
             >
               <span className={styles.num}>{s.num}</span>
               <div className={styles.icon}>{s.icon}</div>
+              {s.offer && (
+                <div className={styles.offerTag}>
+                  Special Starter Package: 5-Page Website from $50
+                </div>
+              )}
               <h3>{s.title}</h3>
               <p>{s.desc}</p>
               <ul className={styles.list}>

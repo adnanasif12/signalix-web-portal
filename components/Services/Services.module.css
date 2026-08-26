@@ -84,6 +84,18 @@
   stroke: var(--accent);
 }
 
+.offerTag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--amber);
+  background: rgba(255, 184, 77, 0.14);
+  border: 1px solid rgba(255, 184, 77, 0.35);
+  border-radius: 100px;
+  padding: 5px 12px;
+  margin-bottom: 14px;
+}
+
 .card h3 {
   font-family: var(--display);
   font-size: 1.2rem;

@@ -1,0 +1,47 @@
+.fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  color: #062512;
+  padding: 14px;
+  border-radius: 100px;
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease;
+}
+
+.fab:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px -8px rgba(0, 0, 0, 0.55);
+}
+
+.icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.label {
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  max-width: 200px;
+  overflow: hidden;
+}
+
+/* Circular icon-only on mobile, per design note in the change map */
+@media (max-width: 640px) {
+  .fab {
+    right: 16px;
+    bottom: 16px;
+    padding: 14px;
+  }
+  .label {
+    display: none;
+  }
+}

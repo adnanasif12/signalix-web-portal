@@ -11,13 +11,13 @@ const REASONS = [
   {
     n: "02",
     accent: "var(--violet)",
-    title: "Built for local & global reach",
-    desc: "Sites and campaigns designed to convert both nearby customers and international clients.",
+    title: "Africa-first. Worldwide reach.",
+    desc: "We help businesses across Africa and worldwide build a stronger digital presence, remotely.",
   },
   {
     n: "03",
     accent: "var(--amber)",
-    title: "Transparent, ongoing reporting",
+    title: "Transparent, ongoing support & reporting",
     desc: "You always know what's live, what changed, and what it's doing for you.",
   },
 ];
@@ -47,10 +47,11 @@ export default function WhyUs() {
         </div>
 
         <div className={`${styles.panel} reveal`} data-reveal>
-          <div className={styles.quoteMark}>&ldquo;</div>
+          <span className={styles.promiseLabel}>Our Promise</span>
           <p className={styles.quote}>
             A website is only the beginning — maintenance, content, and
-            marketing are what keep the signal alive.
+            marketing are what keep the signal alive. We treat every project
+            like it&apos;s ours to grow, not just build and forget.
           </p>
           <div className={styles.who}>— The Signalix team</div>
         </div>
