@@ -19,8 +19,35 @@ const SERVICES = [
     ),
   },
   {
-    num: "02 / Support",
+    num: "02 / Build",
     accent: "var(--violet)",
+    title: "Build your Software",
+    desc: "Custom software solutions built to automate workflows, improve operations, and turn your ideas into reliable digital products.",
+    items: ["Custom web & mobile apps", "Business process automation", "Scalable software architecture"],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M8 18V8a2 2 0 012-2h8a2 2 0 012 2v10" />
+        <path d="M8 18H4a2 2 0 01-2-2V8a2 2 0 012-2h4" />
+        <path d="M10 12h8M10 16h8" />
+      </svg>
+    ),
+  },
+  {
+    num: "03 / Secure",
+    accent: "var(--coral)",
+    title: "Cyber Security",
+    desc: "Protect your digital assets with proactive security reviews, monitoring, and safeguards that reduce exposure and build trust.",
+    items: ["Threat monitoring", "Vulnerability checks", "Security hardening & guidance"],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 3l7 3v6c0 4.2-2.7 8.1-7 10-4.3-1.9-7-5.8-7-10V6l7-3z" />
+        <path d="M9.5 12l1.5 1.5L14.5 9" />
+      </svg>
+    ),
+  },
+  {
+    num: "04 / Support",
+    accent: "var(--cyan)",
     title: "Website Maintenance",
     desc: "Ongoing care so your site stays fast, secure, and up to date — without you lifting a finger.",
     items: ["Security & backup monitoring", "Content & plugin updates", "Speed & uptime checks"],
@@ -31,8 +58,8 @@ const SERVICES = [
     ),
   },
   {
-    num: "03 / Create",
-    accent: "var(--coral)",
+    num: "05 / Create",
+    accent: "var(--amber)",
     title: "Video Editing",
     desc: "Scroll-stopping edits for reels, ads, and YouTube — cut, color graded, and captioned for every platform.",
     items: ["Reels & short-form cuts", "Color grading & sound design", "Subtitles & motion titles"],
@@ -44,8 +71,8 @@ const SERVICES = [
     ),
   },
   {
-    num: "04 / Grow",
-    accent: "var(--amber)",
+    num: "06 / Grow",
+    accent: "var(--lime)",
     title: "Digital Marketing",
     desc: "Search and paid campaigns built around real numbers — so every ad spend is tracked and measured.",
     items: ["SEO & Google Ads", "Meta & TikTok ad campaigns", "Monthly performance reports"],
@@ -57,8 +84,8 @@ const SERVICES = [
     ),
   },
   {
-    num: "05 / Engage",
-    accent: "var(--lime)",
+    num: "07 / Engage",
+    accent: "var(--violet)",
     title: "Social Media Marketing",
     desc: "Consistent, on-brand content calendars that build community and keep your audience coming back.",
     items: ["Content calendar & posting", "Community management", "Growth & engagement strategy"],
@@ -74,7 +101,7 @@ const SERVICES = [
     num: "+ / Bundle",
     accent: "var(--cyan)",
     title: "Full Growth Package",
-    desc: "All five services combined into one monthly plan — built, maintained, and marketed under one roof. A single remote team for your website, content, marketing, and ongoing support.",
+    desc: "All eight services combined into one monthly plan — built, maintained, and marketed under one roof. A single remote team for your website, content, marketing, software, security, and ongoing support.",
     items: ["Single point of contact", "Unified brand strategy", "Custom pricing on request"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -94,7 +121,7 @@ export default function Services() {
           <span className={styles.secEyebrow} style={{ color: "var(--cyan)" }}>
             Our Services
           </span>
-          <h2 className={styles.secTitle}>Five ways we help your business run louder online.</h2>
+          <h2 className={styles.secTitle}>Eight ways we help your business run louder online.</h2>
           <p className={styles.secDesc}>
             Pick one service or bundle them all — every deliverable is built to work together, from the first pixel to the last post.
           </p>
@@ -112,7 +139,7 @@ export default function Services() {
               <div className={styles.icon}>{s.icon}</div>
               {s.offer && (
                 <div className={styles.offerTag}>
-                  Special Starter Package: 5-Page Website from $50
+                  Special Starter Package: Build your website with $50
                 </div>
               )}
               <h3>{s.title}</h3>

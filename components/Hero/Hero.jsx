@@ -49,33 +49,37 @@ export default function Hero() {
           </h1>
           <p className={styles.heroSub}>
             Signalix is a remote full-service IT &amp; digital agency helping
-            businesses across Africa and worldwide build, maintain, and grow
+            businesses across the world build, maintain, and grow
             their online presence.
           </p>
           <p className={styles.trustLine}>
-            Serving businesses across Africa &amp; beyond — fully remote.
+            Serving businesses across the world — fully remote.
           </p>
           <div className={styles.heroCtas}>
             <a href="#contact" className="btn btn-primary">
               Start a Project →
             </a>
-            <a href="#services" className="btn btn-ghost">
-              See Our Services
-            </a>
           </div>
 
           <div className={styles.offerBadge}>
             <span className={styles.offerText}>
-              Special Starter Package: <strong>5-Page Website from $50</strong>
+              Special Starter Package: <strong>Build your website with $50</strong>
             </span>
+           
+          </div>
+          <div>
             <a href="#services" className={styles.offerCta}>
               Claim the $50 Offer →
             </a>
           </div>
 
           <div className={styles.heroTags}>
+            {/* <button type="button" className={styles.heroTagButton}>Claim the $50 Offer →</button> */}
+             
             <span>Website Development</span>
             <span>Digital Marketing</span>
+            <span>Software Development</span>
+            <span>Cybersecurity</span>
             <span>Social Media Marketing</span>
             <span>Website Maintenance</span>
             <span>Video Editing</span>
@@ -110,7 +114,7 @@ export default function Hero() {
             <span className={styles.swatch} style={{ background: "var(--cyan)" }} />
             <span className={styles.txt}>
               Business Website Development
-              <small>5-page site, starting from $50</small>
+              <small>build your website with $50</small>
             </span>
           </div>
           <div className={styles.serviceMini}>

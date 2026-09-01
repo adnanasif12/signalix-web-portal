@@ -15,7 +15,7 @@ export default function Footer() {
               build, maintain, and grow their online presence.
             </p>
             <p className={styles.remoteLine}>
-              Remote agency serving Africa &amp; worldwide.
+              Remote agency serving your business worldwide.
             </p>
           </div>
           <div className={styles.footerCol}>

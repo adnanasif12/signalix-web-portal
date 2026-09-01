@@ -77,7 +77,7 @@ export default function Industries() {
       <div className="container">
         <div className={`${styles.secHead} reveal`} data-reveal>
           <span className={styles.secEyebrow}>Who We Work With</span>
-          <h2 className={styles.secTitle}>Built for Businesses Across Africa &amp; Beyond</h2>
+          <h2 className={styles.secTitle}>Built for Businesses Across The World</h2>
           <p className={styles.secDesc}>
             Wherever your business operates, our remote team adapts to your
             industry and market.
