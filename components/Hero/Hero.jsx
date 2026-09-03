@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import styles from "./Hero.module.css";
 
 function useWave(ref, amp, freq, speed, phaseStart) {
@@ -41,7 +42,15 @@ export default function Hero() {
 
       <div className={`container ${styles.heroInner}`}>
         <div>
-          <span className={styles.eyebrow}>● Available for new projects</span>
+          <div className={styles.heroLogo}>
+            <Image
+              src="/images/image1.png"
+              alt="Signalix - We turn your business into a digital signal"
+              width={280}
+              height={64}
+              priority
+            />
+          </div>
           <h1 className={styles.h1}>
             We turn your business into a{" "}
             <span className={styles.grad}>digital signal</span> people can&apos;t
@@ -55,11 +64,6 @@ export default function Hero() {
           <p className={styles.trustLine}>
             Serving businesses across the world — fully remote.
           </p>
-          <div className={styles.heroCtas}>
-            <a href="#contact" className="btn btn-primary">
-              Start a Project →
-            </a>
-          </div>
 
           <div className={styles.offerBadge}>
             <span className={styles.offerText}>

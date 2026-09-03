@@ -10,15 +10,13 @@
   letter-spacing: -0.02em;
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
 }
 
-.dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 12px 2px var(--cyan);
+.logo img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .footerTop {

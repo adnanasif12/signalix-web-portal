@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -7,8 +8,14 @@ export default function Footer() {
         <div className={styles.footerTop}>
           <div className={styles.footerBrand}>
             <a href="#top" className={styles.logo}>
-              <span className={styles.dot} />
-              Signalix
+              <Image
+                src="/images/image2.png"
+                alt="Signalix"
+                width={24}
+                height={24}
+                priority
+              />
+              <span>Signalix</span>
             </a>
             <p>
               A full-service IT &amp; digital agency helping small businesses

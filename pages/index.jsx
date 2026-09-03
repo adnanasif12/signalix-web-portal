@@ -20,6 +20,19 @@ export default function Home() {
           name="description"
           content="Signalix is a remote full-service IT & digital agency helping businesses across Africa and worldwide build, maintain, and grow their online presence."
         />
+        <link rel="icon" href="/images/image2.png" type="image/png" />
+        <link rel="shortcut icon" href="/images/image2.png" type="image/png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Signalix — Digital & IT Services Agency" />
+        <meta
+          property="og:description"
+          content="Signalix is a remote full-service IT & digital agency helping businesses across Africa and worldwide build, maintain, and grow their online presence."
+        />
+        <meta property="og:image" content="/images/image1.png" />
+        <meta property="og:url" content="https://signalix.agency" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Signalix — Digital & IT Services Agency" />
+        <meta name="twitter:image" content="/images/image1.png" />
       </Head>
 
       <Header />

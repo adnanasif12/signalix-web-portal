@@ -31,22 +31,26 @@
 }
 
 .logo {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 2px;
 }
 
-.dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 12px 2px var(--cyan);
-  animation: blink 2.4s ease-in-out infinite;
+.logo img {
+  width: 240px;
+  height: 55px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.logo img:first-child {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.logo img:last-child {
+  margin-left: -82px;
 }
 
 @keyframes blink {

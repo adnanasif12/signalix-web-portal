@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -14,8 +15,20 @@ export default function Header() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <nav className={styles.nav}>
         <a href="#top" className={styles.logo}>
-          <span className={styles.dot} />
-          Signalix
+          <Image
+            src="/images/image2.png"
+            alt=""
+            width={28}
+            height={28}
+            priority
+          />
+          <Image
+            src="/images/image1.png"
+            alt="Signalix"
+            width={180}
+            height={41}
+            priority
+          />
         </a>
         <ul className={styles.navLinks}>
           <li>
