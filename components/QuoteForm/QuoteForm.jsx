@@ -47,8 +47,6 @@ export default function QuoteForm() {
     setSaveError(false);
 
     // Save the lead to Supabase so it shows up in the admin panel.
-    // If this fails (offline, Supabase not configured yet, etc.) we still
-    // fall through to the mailto so the enquiry isn't lost.
     let hadError = false;
     if (supabase) {
       const { error } = await supabase.from("leads").insert({
@@ -62,29 +60,34 @@ export default function QuoteForm() {
       });
       if (error) {
         hadError = true;
-        setSaveError(true);
         console.error("Failed to save lead:", error.message);
       }
+    } else {
+      hadError = true;
     }
 
-    const subject = `New Quote Request — ${form.name || "Website Visitor"}`;
-    const body = [
-      `Name: ${form.name}`,
-      `Business/Company: ${form.company}`,
-      `Country: ${form.country}`,
-      `WhatsApp/Email: ${form.contact}`,
-      `Service Needed: ${form.service}`,
-      `Budget Range: ${form.budget}`,
-      "",
-      "Project Description:",
-      form.description,
-    ].join("\n");
-
-    const mailto = `mailto:hello@signalix.agency?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
+    if (hadError) {
+      // Only fall back to opening the visitor's email app if we couldn't
+      // save the request anywhere — so it isn't lost. When the save
+      // succeeds, we never trigger mailto (avoids the OS "choose an app"
+      // popup on every submit).
+      setSaveError(true);
+      const subject = `New Quote Request — ${form.name || "Website Visitor"}`;
+      const body = [
+        `Name: ${form.name}`,
+        `Business/Company: ${form.company}`,
+        `Country: ${form.country}`,
+        `WhatsApp/Email: ${form.contact}`,
+        `Service Needed: ${form.service}`,
+        `Budget Range: ${form.budget}`,
+        "",
+        "Project Description:",
+        form.description,
+      ].join("\n");
+      window.location.href = `mailto:hello@signalix.agency?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
+    }
 
     // Clear the form and show a confirmation card so the visitor gets
     // clear feedback that their request went through, instead of the
@@ -93,8 +96,6 @@ export default function QuoteForm() {
     setSubmitting(false);
     setShowConfirmation(true);
     setTimeout(() => setShowConfirmation(false), 4000);
-    // eslint-disable-next-line no-unused-vars -- kept for clarity/future use
-    void hadError;
   }
 
   return (
@@ -193,8 +194,8 @@ export default function QuoteForm() {
       </button>
       <p className={styles.note}>
         {saveError
-          ? "We couldn't save your request automatically, but your email app will still open with your details pre-filled."
-          : "This also opens your email app with your details pre-filled — nothing is sent automatically."}
+          ? "We couldn't save your request automatically — your email app should open instead so nothing is lost."
+          : "Your request goes straight to our team — no email app will open."}
       </p>
       </form>
 
