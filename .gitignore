@@ -2,6 +2,7 @@
 /node_modules
 /.pnp
 .pnp.js
+# # U-iB*G&W9pm@_Yh
 
 # Next.js build output
 /.next/
@@ -21,7 +22,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
+/
 # Testing & Coverage
 /coverage
 

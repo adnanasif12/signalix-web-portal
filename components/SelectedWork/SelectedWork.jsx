@@ -1,40 +1,40 @@
 import useReveal from "../../hooks/useReveal";
 import styles from "./SelectedWork.module.css";
 
+const ACCENTS = ["var(--cyan)", "var(--coral)", "var(--amber)", "var(--violet)", "var(--lime)"];
+
 /**
- * IMPORTANT: Replace these placeholder entries with real, completed
- * projects only. Do not publish invented results, client names, or
- * metrics — see change-map rule #17.
+ * Placeholder shown only when no published projects exist yet in the
+ * admin panel (Portfolio section). Add real projects there — this
+ * fallback disappears automatically once you do.
  */
-const PROJECTS = [
+const PLACEHOLDER_PROJECTS = [
   {
-    project: "Project Name",
+    project_name: "Project Name",
     industry: "Industry",
     market: "Market / Country",
-    service: "Service Provided",
-    result: "Short, honest result (e.g. what changed for the client)",
-    accent: "var(--cyan)",
+    service_provided: "Service Provided",
+    result_summary: "Short, honest result (e.g. what changed for the client)",
   },
   {
-    project: "Project Name",
+    project_name: "Project Name",
     industry: "Industry",
     market: "Market / Country",
-    service: "Service Provided",
-    result: "Short, honest result (e.g. what changed for the client)",
-    accent: "var(--coral)",
+    service_provided: "Service Provided",
+    result_summary: "Short, honest result (e.g. what changed for the client)",
   },
   {
-    project: "Project Name",
+    project_name: "Project Name",
     industry: "Industry",
     market: "Market / Country",
-    service: "Service Provided",
-    result: "Short, honest result (e.g. what changed for the client)",
-    accent: "var(--amber)",
+    service_provided: "Service Provided",
+    result_summary: "Short, honest result (e.g. what changed for the client)",
   },
 ];
 
-export default function SelectedWork() {
+export default function SelectedWork({ projects }) {
   const containerRef = useReveal();
+  const items = projects && projects.length > 0 ? projects : PLACEHOLDER_PROJECTS;
 
   return (
     <section className="section-pad" id="work" ref={containerRef}>
@@ -49,24 +49,24 @@ export default function SelectedWork() {
         </div>
 
         <div className={styles.grid}>
-          {PROJECTS.map((p, i) => (
+          {items.map((p, i) => (
             <div
-              key={i}
+              key={p.id || i}
               className={`${styles.card} reveal`}
               data-reveal
-              style={{ "--accent": p.accent }}
+              style={{ "--accent": ACCENTS[i % ACCENTS.length] }}
             >
               <div className={styles.thumb} />
               <div className={styles.body}>
                 <span className={styles.industry}>{p.industry}</span>
-                <h3>{p.project}</h3>
+                <h3>{p.project_name}</h3>
                 <div className={styles.meta}>
                   <span>{p.market}</span>
                   <span>•</span>
-                  <span>{p.service}</span>
+                  <span>{p.service_provided}</span>
                 </div>
-                <p className={styles.result}>{p.result}</p>
-                <a href="#contact" className={styles.link}>
+                <p className={styles.result}>{p.result_summary}</p>
+                <a href={p.project_url || "#contact"} className={styles.link}>
                   View Project →
                 </a>
               </div>

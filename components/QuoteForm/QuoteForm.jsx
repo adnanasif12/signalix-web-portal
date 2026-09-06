@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "../../lib/supabaseClient";
 import styles from "./QuoteForm.module.css";
 
 const SERVICE_OPTIONS = [
@@ -31,14 +32,40 @@ const EMPTY_FORM = {
 
 export default function QuoteForm() {
   const [form, setForm] = useState(EMPTY_FORM);
+  const [submitting, setSubmitting] = useState(false);
+  const [saveError, setSaveError] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   function handleChange(e) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    setSubmitting(true);
+    setSaveError(false);
+
+    // Save the lead to Supabase so it shows up in the admin panel.
+    // If this fails (offline, Supabase not configured yet, etc.) we still
+    // fall through to the mailto so the enquiry isn't lost.
+    let hadError = false;
+    if (supabase) {
+      const { error } = await supabase.from("leads").insert({
+        name: form.name,
+        company: form.company,
+        country: form.country,
+        contact: form.contact,
+        service: form.service,
+        budget: form.budget,
+        message: form.description,
+      });
+      if (error) {
+        hadError = true;
+        setSaveError(true);
+        console.error("Failed to save lead:", error.message);
+      }
+    }
 
     const subject = `New Quote Request — ${form.name || "Website Visitor"}`;
     const body = [
@@ -58,10 +85,21 @@ export default function QuoteForm() {
     )}&body=${encodeURIComponent(body)}`;
 
     window.location.href = mailto;
+
+    // Clear the form and show a confirmation card so the visitor gets
+    // clear feedback that their request went through, instead of the
+    // page just sitting there with the old values still filled in.
+    setForm(EMPTY_FORM);
+    setSubmitting(false);
+    setShowConfirmation(true);
+    setTimeout(() => setShowConfirmation(false), 4000);
+    // eslint-disable-next-line no-unused-vars -- kept for clarity/future use
+    void hadError;
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <>
+      <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="name">Name</label>
@@ -150,13 +188,27 @@ export default function QuoteForm() {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary">
-        Get a Quote →
+      <button type="submit" className="btn btn-primary" disabled={submitting}>
+        {submitting ? "Sending..." : "Get a Quote →"}
       </button>
       <p className={styles.note}>
-        This opens your email app with your details pre-filled — nothing is
-        sent automatically.
+        {saveError
+          ? "We couldn't save your request automatically, but your email app will still open with your details pre-filled."
+          : "This also opens your email app with your details pre-filled — nothing is sent automatically."}
       </p>
-    </form>
+      </form>
+
+      {showConfirmation && (
+        <div className={styles.toast} role="status">
+          <span className={styles.toastIcon}>✓</span>
+          <div>
+            <p className={styles.toastTitle}>Request received!</p>
+            <p className={styles.toastText}>
+              Thanks — we&apos;ll get back to you within one business day.
+            </p>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

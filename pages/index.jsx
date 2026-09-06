@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { supabase } from "../lib/supabaseClient";
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
 import PulseDivider from "../components/PulseDivider/PulseDivider";
@@ -11,7 +12,7 @@ import CTA from "../components/CTA/CTA";
 import Footer from "../components/Footer/Footer";
 import FloatingWhatsApp from "../components/FloatingWhatsApp/FloatingWhatsApp";
 
-export default function Home() {
+export default function Home({ projects }) {
   return (
     <>
       <Head>
@@ -40,7 +41,7 @@ export default function Home() {
       <PulseDivider />
       <Services />
       <Industries />
-      <SelectedWork />
+      <SelectedWork projects={projects} />
       <Process />
       <WhyUs />
       <CTA />
@@ -48,4 +49,25 @@ export default function Home() {
       <FloatingWhatsApp />
     </>
   );
+}
+
+// Pulls published projects from the admin panel (Portfolio section).
+// revalidate: 60 means changes made in the admin panel show up on the
+// live site within ~1 minute, without needing a redeploy.
+export async function getStaticProps() {
+  let projects = [];
+
+  if (supabase) {
+    const { data } = await supabase
+      .from("portfolio_projects")
+      .select("*")
+      .eq("is_published", true)
+      .order("sort_order", { ascending: true });
+    projects = data || [];
+  }
+
+  return {
+    props: { projects },
+    revalidate: 60,
+  };
 }
