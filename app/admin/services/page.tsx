@@ -102,7 +102,7 @@ export default function ServicesPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-semibold text-white">Services</h1>
           <p className="mt-1 text-sm text-slate-400">
@@ -119,7 +119,7 @@ export default function ServicesPage() {
           <h2 className="text-sm font-semibold text-slate-200">
             {editing ? "Edit service" : "New service"}
           </h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label className="label-text">Step label</label>
               <input
@@ -197,7 +197,7 @@ export default function ServicesPage() {
           <p className="text-sm text-slate-500">Loading...</p>
         ) : (
           items.map((item) => (
-            <div key={item.id} className="card flex items-start gap-4 p-4">
+            <div key={item.id} className="card flex flex-col items-stretch gap-4 p-4 sm:flex-row sm:items-start">
               <div className="flex-1">
                 <div className="flex items-center gap-2">
                   {item.step_label && (
@@ -232,7 +232,7 @@ export default function ServicesPage() {
                   </ul>
                 )}
               </div>
-              <div className="flex shrink-0 flex-col gap-2">
+              <div className="flex shrink-0 flex-row gap-2 sm:flex-col">
                 <button
                   onClick={() => openEdit(item)}
                   className="btn-secondary py-1.5 text-xs"

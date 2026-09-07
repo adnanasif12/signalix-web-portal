@@ -79,13 +79,13 @@ export default async function DashboardPage() {
           </Link>
         </div>
 
-        <div className="card overflow-hidden">
+        <div className="card overflow-x-auto">
           {!recentLeads || recentLeads.length === 0 ? (
             <p className="p-6 text-center text-sm text-slate-500">
               এখনো কোনো quote request আসেনি। নতুন request আসলে এখানে দেখাবে।
             </p>
           ) : (
-            <table className="w-full text-left text-sm">
+            <table className="w-full min-w-[560px] text-left text-sm">
               <thead className="border-b border-navy-600 text-xs uppercase text-slate-500">
                 <tr>
                   <th className="px-4 py-3 font-medium">Name</th>

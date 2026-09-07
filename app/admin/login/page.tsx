@@ -6,7 +6,11 @@ import { createClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const router = useRouter();
-  const supabase = createClient();
+  const supabase =
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+      ? createClient()
+      : null;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -16,6 +20,12 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     setError("");
+
+    if (!supabase) {
+      setError("Supabase environment variables are not configured on Vercel.");
+      setLoading(false);
+      return;
+    }
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -44,6 +54,12 @@ export default function LoginPage() {
         </div>
 
         <form onSubmit={handleLogin} className="card space-y-4 p-6">
+          {!supabase && (
+            <p className="rounded-lg bg-red-950/40 px-3 py-2 text-sm text-red-300">
+              Admin login is not configured yet. Add the Supabase variables in
+              Vercel Project Settings, then redeploy.
+            </p>
+          )}
           <div>
             <label className="label-text">Email</label>
             <input

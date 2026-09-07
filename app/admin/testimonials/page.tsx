@@ -94,7 +94,7 @@ export default function TestimonialsPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-semibold text-white">Testimonials</h1>
           <p className="mt-1 text-sm text-slate-400">
@@ -111,7 +111,7 @@ export default function TestimonialsPage() {
           <h2 className="text-sm font-semibold text-slate-200">
             {editing ? "Edit testimonial" : "New testimonial"}
           </h2>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div>
               <label className="label-text">Client name</label>
               <input
@@ -157,7 +157,7 @@ export default function TestimonialsPage() {
               rows={3}
             />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label className="label-text">Rating (1–5)</label>
               <input

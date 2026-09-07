@@ -64,7 +64,7 @@ export default function LeadsPage() {
         </div>
       </div>
 
-      <div className="mt-5 flex gap-2">
+      <div className="mt-5 flex flex-wrap gap-2">
         {["all", ...STATUS_OPTIONS].map((f) => (
           <button
             key={f}
@@ -128,7 +128,7 @@ export default function LeadsPage() {
                 </button>
 
                 {expandedId === lead.id && (
-                  <div className="grid grid-cols-2 gap-4 border-t border-navy-700 bg-navy-900/40 px-4 py-4 text-sm md:grid-cols-4">
+                  <div className="grid grid-cols-1 gap-4 border-t border-navy-700 bg-navy-900/40 px-4 py-4 text-sm sm:grid-cols-2 md:grid-cols-4">
                     <Field label="Contact" value={lead.contact} />
                     <Field label="Country" value={lead.country || "—"} />
                     <Field label="Budget" value={lead.budget || "—"} />

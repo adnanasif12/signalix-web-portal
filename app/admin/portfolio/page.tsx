@@ -99,7 +99,7 @@ export default function PortfolioPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-semibold text-white">Portfolio</h1>
           <p className="mt-1 text-sm text-slate-400">
@@ -116,7 +116,7 @@ export default function PortfolioPage() {
           <h2 className="text-sm font-semibold text-slate-200">
             {editing ? "Edit project" : "New project"}
           </h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <TextInput
               label="Industry"
               value={form.industry}

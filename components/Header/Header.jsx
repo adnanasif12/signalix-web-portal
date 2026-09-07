@@ -4,6 +4,7 @@ import styles from "./Header.module.css";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -30,24 +31,35 @@ export default function Header() {
             priority
           />
         </a>
-        <ul className={styles.navLinks}>
+        <ul className={`${styles.navLinks} ${menuOpen ? styles.navLinksOpen : ""}`}>
           <li>
-            <a href="#services">Services</a>
+            <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
           </li>
           <li>
-            <a href="#process">Process</a>
+            <a href="#process" onClick={() => setMenuOpen(false)}>Process</a>
           </li>
           <li>
-            <a href="#why">Why Us</a>
+            <a href="#why" onClick={() => setMenuOpen(false)}>Why Us</a>
           </li>
           <li>
-            <a href="#contact">Contact</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
           </li>
         </ul>
         <div className={styles.navCta}>
-          <a href="#contact" className="btn btn-primary">
+          <a href="#contact" className="btn btn-primary navQuote" onClick={() => setMenuOpen(false)}>
             Get a Quote
           </a>
+          <button
+            type="button"
+            className={styles.menuToggle}
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
       </nav>
     </header>

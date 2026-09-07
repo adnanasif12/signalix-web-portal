@@ -24,15 +24,15 @@ export default function Sidebar({ email }: { email?: string }) {
   }
 
   return (
-    <aside className="flex h-screen w-60 flex-col border-r border-navy-700 bg-navy-900/80 px-3 py-5">
-      <div className="mb-8 flex items-center gap-2 px-2">
+    <aside className="flex w-full shrink-0 flex-col border-b border-navy-700 bg-navy-900/80 px-3 py-4 md:h-screen md:w-60 md:border-b-0 md:border-r md:py-5">
+      <div className="mb-4 flex items-center gap-2 px-2 md:mb-8">
         <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-signal-gradient text-sm font-bold text-white">
           S
         </div>
         <span className="text-sm font-semibold text-white">Signalix Admin</span>
       </div>
 
-      <nav className="flex-1 space-y-1">
+      <nav className="grid grid-cols-2 gap-1 md:block md:flex-1 md:space-y-1">
         {NAV_ITEMS.map((item) => {
           const active =
             item.href === "/admin"
@@ -55,7 +55,7 @@ export default function Sidebar({ email }: { email?: string }) {
         })}
       </nav>
 
-      <div className="border-t border-navy-700 pt-3">
+      <div className="mt-3 border-t border-navy-700 pt-3 md:mt-0">
         {email && (
           <p className="mb-2 truncate px-2 text-xs text-slate-500">{email}</p>
         )}
