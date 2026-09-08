@@ -27,19 +27,25 @@ export default function LoginPage() {
       return;
     }
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     if (error) {
-      setError("Incorrect email or password. Please try again.");
+      setError(error.message || "Unable to sign in. Please try again.");
+      setLoading(false);
+      return;
+    }
+
+    if (!data.session) {
+      setError("Sign-in did not create a session. Please try again.");
       setLoading(false);
       return;
     }
 
     router.refresh();
-    router.push("/admin");
+    router.replace("/admin");
   }
 
   return (
