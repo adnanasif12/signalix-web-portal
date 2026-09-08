@@ -83,7 +83,7 @@ export default function ServicesPage() {
   }
 
   async function handleDelete(id: string) {
-    if (!confirm("এই service টা মুছে ফেলতে চাও?")) return;
+    if (!confirm("Delete this service? This action cannot be undone.")) return;
     await supabase.from("services").delete().eq("id", id);
     load();
   }
@@ -106,7 +106,7 @@ export default function ServicesPage() {
         <div>
           <h1 className="text-2xl font-semibold text-white">Services</h1>
           <p className="mt-1 text-sm text-slate-400">
-            হোমপেজের "Eight ways we help" section-এর card গুলো এখানে।
+            Manage the cards in the homepage's "Eight ways we help" section.
           </p>
         </div>
         <button onClick={openNew} className="btn-primary">
@@ -156,7 +156,7 @@ export default function ServicesPage() {
           </div>
           <div>
             <label className="label-text">
-              Bullet points (একটা করে line-এ একটা)
+              Bullet points (one per line)
             </label>
             <textarea
               value={bulletsText}
@@ -175,7 +175,7 @@ export default function ServicesPage() {
               }
               className="rounded border-navy-600 bg-navy-900"
             />
-            এইটা কি "Special Starter Package" offer card?
+            Is this a "Special Starter Package" offer card?
           </label>
           <div className="flex items-center gap-2">
             <button type="submit" disabled={saving} className="btn-primary">

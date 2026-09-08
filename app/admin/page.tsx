@@ -50,7 +50,7 @@ export default async function DashboardPage() {
     <div>
       <h1 className="text-2xl font-semibold text-white">Dashboard</h1>
       <p className="mt-1 text-sm text-slate-400">
-        Signalix website-এর সব data এক জায়গায়।
+        All Signalix website data in one place.
       </p>
 
       <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-5">
@@ -82,7 +82,7 @@ export default async function DashboardPage() {
         <div className="card overflow-x-auto">
           {!recentLeads || recentLeads.length === 0 ? (
             <p className="p-6 text-center text-sm text-slate-500">
-              এখনো কোনো quote request আসেনি। নতুন request আসলে এখানে দেখাবে।
+              No quote requests yet. New requests will appear here.
             </p>
           ) : (
             <table className="w-full min-w-[560px] text-left text-sm">

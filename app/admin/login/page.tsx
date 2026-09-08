@@ -33,7 +33,7 @@ export default function LoginPage() {
     });
 
     if (error) {
-      setError("Email অথবা password সঠিক না। আবার চেষ্টা করো।");
+      setError("Incorrect email or password. Please try again.");
       setLoading(false);
       return;
     }
@@ -95,7 +95,7 @@ export default function LoginPage() {
         </form>
 
         <p className="mt-6 text-center text-xs text-slate-500">
-          Admin account Supabase Dashboard থেকে তৈরি করা হয় — নিচের README দেখো।
+          Create the admin account in the Supabase Dashboard. See the README for details.
         </p>
       </div>
     </div>

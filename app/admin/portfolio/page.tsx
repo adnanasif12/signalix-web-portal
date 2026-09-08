@@ -80,7 +80,7 @@ export default function PortfolioPage() {
   }
 
   async function handleDelete(id: string) {
-    if (!confirm("এই project টা মুছে ফেলতে চাও?")) return;
+    if (!confirm("Delete this project? This action cannot be undone.")) return;
     await supabase.from("portfolio_projects").delete().eq("id", id);
     load();
   }
@@ -103,7 +103,7 @@ export default function PortfolioPage() {
         <div>
           <h1 className="text-2xl font-semibold text-white">Portfolio</h1>
           <p className="mt-1 text-sm text-slate-400">
-            "Selected Work" section-এর project card গুলো এখান থেকে manage করো।
+            Manage the project cards in the "Selected Work" section.
           </p>
         </div>
         <button onClick={openNew} className="btn-primary">
@@ -182,7 +182,7 @@ export default function PortfolioPage() {
           <p className="text-sm text-slate-500">Loading...</p>
         ) : items.length === 0 ? (
           <p className="text-sm text-slate-500">
-            এখনো কোনো project add করা হয়নি।
+            No projects have been added yet.
           </p>
         ) : (
           items.map((item) => (

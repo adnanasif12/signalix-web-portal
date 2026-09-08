@@ -45,7 +45,7 @@ export default function LeadsPage() {
   }
 
   async function deleteLead(id: string) {
-    if (!confirm("এই lead টা মুছে ফেলতে চাও? এটা ফিরে আনা যাবে না।")) return;
+    if (!confirm("Delete this lead? This action cannot be undone.")) return;
     setLeads((prev) => prev.filter((l) => l.id !== id));
     await supabase.from("leads").delete().eq("id", id);
   }
@@ -59,7 +59,7 @@ export default function LeadsPage() {
         <div>
           <h1 className="text-2xl font-semibold text-white">Leads</h1>
           <p className="mt-1 text-sm text-slate-400">
-            Website-এর Get a Quote form থেকে আসা সব request।
+            All requests submitted through the website's Get a Quote form.
           </p>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default function LeadsPage() {
           <p className="p-6 text-center text-sm text-slate-500">Loading...</p>
         ) : filteredLeads.length === 0 ? (
           <p className="p-6 text-center text-sm text-slate-500">
-            কোনো lead পাওয়া যায়নি।
+            No leads found.
           </p>
         ) : (
           <div className="divide-y divide-navy-700">
@@ -136,7 +136,7 @@ export default function LeadsPage() {
                     <div className="col-span-2 md:col-span-4">
                       <p className="label-text">Message</p>
                       <p className="text-slate-300">
-                        {lead.message || "কোনো message দেওয়া হয়নি।"}
+                        {lead.message || "No message provided."}
                       </p>
                     </div>
                     <div className="col-span-2 md:col-span-4 flex justify-end">

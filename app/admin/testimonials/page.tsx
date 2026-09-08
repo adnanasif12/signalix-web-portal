@@ -75,7 +75,7 @@ export default function TestimonialsPage() {
   }
 
   async function handleDelete(id: string) {
-    if (!confirm("এই testimonial টা মুছে ফেলতে চাও?")) return;
+    if (!confirm("Delete this testimonial? This action cannot be undone.")) return;
     await supabase.from("testimonials").delete().eq("id", id);
     load();
   }
@@ -98,7 +98,7 @@ export default function TestimonialsPage() {
         <div>
           <h1 className="text-2xl font-semibold text-white">Testimonials</h1>
           <p className="mt-1 text-sm text-slate-400">
-            Client review গুলো এখান থেকে add/edit করো।
+            Add and edit client reviews here.
           </p>
         </div>
         <button onClick={openNew} className="btn-primary">
@@ -203,7 +203,7 @@ export default function TestimonialsPage() {
           <p className="text-sm text-slate-500">Loading...</p>
         ) : items.length === 0 ? (
           <p className="text-sm text-slate-500">
-            এখনো কোনো testimonial add করা হয়নি।
+            No testimonials have been added yet.
           </p>
         ) : (
           items.map((item) => (
