@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-  max-width: 640px;
+  max-width: 720px;
   margin: 40px auto 0;
   text-align: left;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 30px;
+  padding: 34px;
 }
 
 .row {

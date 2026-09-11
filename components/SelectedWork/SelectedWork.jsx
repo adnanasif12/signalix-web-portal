@@ -1,4 +1,3 @@
-import useReveal from "../../hooks/useReveal";
 import styles from "./SelectedWork.module.css";
 
 const ACCENTS = ["var(--cyan)", "var(--coral)", "var(--amber)", "var(--violet)", "var(--lime)"];
@@ -33,13 +32,12 @@ const PLACEHOLDER_PROJECTS = [
 ];
 
 export default function SelectedWork({ projects }) {
-  const containerRef = useReveal();
   const items = projects && projects.length > 0 ? projects : PLACEHOLDER_PROJECTS;
 
   return (
-    <section className="section-pad" id="work" ref={containerRef}>
+    <section className="section-pad" id="work">
       <div className="container">
-        <div className={`${styles.secHead} reveal`} data-reveal>
+        <div className={styles.secHead} data-aos="fade-left">
           <span className={styles.secEyebrow}>Selected Work</span>
           <h2 className={styles.secTitle}>Real projects, real results.</h2>
           <p className={styles.secDesc}>
@@ -52,8 +50,9 @@ export default function SelectedWork({ projects }) {
           {items.map((p, i) => (
             <div
               key={p.id || i}
-              className={`${styles.card} reveal`}
-              data-reveal
+              className={styles.card}
+              data-aos="fade-left"
+              data-aos-delay={i * 100}
               style={{ "--accent": ACCENTS[i % ACCENTS.length] }}
             >
               <div className={styles.thumb} />

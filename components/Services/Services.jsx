@@ -1,4 +1,3 @@
-import useReveal from "../../hooks/useReveal";
 import styles from "./Services.module.css";
 
 const SERVICES = [
@@ -112,12 +111,10 @@ const SERVICES = [
 ];
 
 export default function Services() {
-  const containerRef = useReveal();
-
   return (
-    <section className="section-pad" id="services" ref={containerRef}>
+    <section className="section-pad" id="services">
       <div className="container">
-        <div className={`${styles.secHead} reveal`} data-reveal>
+        <div className={styles.secHead} data-aos="fade-up">
           <span className={styles.secEyebrow} style={{ color: "var(--cyan)" }}>
             Our Services
           </span>
@@ -128,11 +125,12 @@ export default function Services() {
         </div>
 
         <div className={styles.grid}>
-          {SERVICES.map((s) => (
+          {SERVICES.map((s, i) => (
             <div
               key={s.title}
-              className={`${styles.card} reveal`}
-              data-reveal
+              className={styles.card}
+              data-aos="fade-up"
+              data-aos-delay={i * 80}
               style={{ "--accent": s.accent }}
             >
               <span className={styles.num}>{s.num}</span>

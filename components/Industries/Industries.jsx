@@ -1,4 +1,3 @@
-import useReveal from "../../hooks/useReveal";
 import styles from "./Industries.module.css";
 
 const INDUSTRIES = [
@@ -70,12 +69,10 @@ const INDUSTRIES = [
 ];
 
 export default function Industries() {
-  const containerRef = useReveal();
-
   return (
-    <section className="section-pad" id="industries" ref={containerRef}>
+    <section className="section-pad" id="industries">
       <div className="container">
-        <div className={`${styles.secHead} reveal`} data-reveal>
+        <div className={styles.secHead} data-aos="fade-right">
           <span className={styles.secEyebrow}>Who We Work With</span>
           <h2 className={styles.secTitle}>Built for Businesses Across The World</h2>
           <p className={styles.secDesc}>
@@ -85,11 +82,12 @@ export default function Industries() {
         </div>
 
         <div className={styles.grid}>
-          {INDUSTRIES.map((ind) => (
+          {INDUSTRIES.map((ind, i) => (
             <div
               key={ind.title}
-              className={`${styles.card} reveal`}
-              data-reveal
+              className={styles.card}
+              data-aos="fade-right"
+              data-aos-delay={i * 80}
               style={{ "--accent": ind.accent }}
             >
               <div className={styles.icon}>{ind.icon}</div>

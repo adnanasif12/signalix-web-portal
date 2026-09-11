@@ -1,4 +1,3 @@
-import useReveal from "../../hooks/useReveal";
 import styles from "./Process.module.css";
 
 const STEPS = [
@@ -29,22 +28,21 @@ const STEPS = [
 ];
 
 export default function Process() {
-  const containerRef = useReveal();
-
   return (
-    <section className={`section-pad ${styles.process}`} id="process" ref={containerRef}>
+    <section className={`section-pad ${styles.process}`} id="process">
       <div className="container">
-        <div className="reveal" data-reveal style={{ maxWidth: 640, marginBottom: 64 }}>
+        <div data-aos="fade-up" style={{ maxWidth: 640, marginBottom: 64 }}>
           <span className={styles.secEyebrow}>How We Work</span>
           <h2 className={styles.secTitle}>From first call to live signal — four steps.</h2>
         </div>
 
         <div className={styles.row}>
-          {STEPS.map((s) => (
+          {STEPS.map((s, i) => (
             <div
               key={s.n}
-              className={`${styles.step} reveal`}
-              data-reveal
+              className={styles.step}
+              data-aos="fade-up"
+              data-aos-delay={i * 100}
               style={{ "--accent": s.accent }}
             >
               <div className={styles.stepDot}>{s.n}</div>

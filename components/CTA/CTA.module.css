@@ -1,5 +1,5 @@
 .ctaSection {
-  padding: 100px 0;
+  padding: 40px 0;
 }
 
 .ctaCard {
@@ -15,14 +15,14 @@
 .ctaCard h2 {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: -0.02em;
   margin-bottom: 16px;
 }
 
 .ctaCard p {
   color: var(--muted);
-  max-width: 480px;
+  max-width: 560px;
   margin: 0 auto 32px;
 }
 
@@ -33,8 +33,17 @@
   flex-wrap: wrap;
 }
 
+.ctaBtns .btn {
+  padding: 14px 28px;
+  font-size: 1rem;
+}
+
 @media (max-width: 640px) {
   .ctaCard {
     padding: 44px 24px;
+  }
+
+  .ctaBtns .btn {
+    padding: 13px 24px;
   }
 }

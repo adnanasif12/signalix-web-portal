@@ -6,7 +6,7 @@ export default function PulseDivider() {
       <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
         <polyline
           className={styles.pulseLine}
-          points="0,30 150,30 180,10 210,50 240,30 400,30 430,15 460,45 490,30 700,30 730,8 760,52 790,30 1000,30 1030,15 1060,45 1090,30 1200,30"
+          points="0,30 130,30 180,4 230,56 280,30 380,30 430,6 480,54 530,30 660,30 710,3 760,57 810,30 940,30 990,5 1040,55 1090,30 1200,30"
           stroke="url(#pulseGrad)"
         />
         <defs>

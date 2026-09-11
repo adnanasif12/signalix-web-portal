@@ -1,4 +1,3 @@
-import useReveal from "../../hooks/useReveal";
 import styles from "./WhyUs.module.css";
 
 const REASONS = [
@@ -23,12 +22,10 @@ const REASONS = [
 ];
 
 export default function WhyUs() {
-  const containerRef = useReveal();
-
   return (
-    <section className="section-pad" id="why" ref={containerRef}>
+    <section className="section-pad" id="why">
       <div className={`container ${styles.grid}`}>
-        <div className="reveal" data-reveal>
+        <div data-aos="fade-right">
           <span className={styles.secEyebrow}>Why Signalix</span>
           <h2 className={styles.secTitle}>One agency for the whole signal chain.</h2>
           <div className={styles.list}>
@@ -46,7 +43,7 @@ export default function WhyUs() {
           </div>
         </div>
 
-        <div className={`${styles.panel} reveal`} data-reveal>
+        <div className={styles.panel} data-aos="fade-left" data-aos-delay="150">
           <span className={styles.promiseLabel}>Our Promise</span>
           <p className={styles.quote}>
             A website is only the beginning — maintenance, content, and

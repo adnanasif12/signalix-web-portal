@@ -1,11 +1,17 @@
 .pulseDivider {
   width: 100%;
-  height: 64px;
+  height: 120px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--bg);
+}
+
+@media (max-width: 640px) {
+  .pulseDivider {
+    height: 88px;
+  }
 }
 
 .pulseDivider svg {

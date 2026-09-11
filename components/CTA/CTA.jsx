@@ -1,14 +1,11 @@
-import useReveal from "../../hooks/useReveal";
 import QuoteForm from "../QuoteForm/QuoteForm";
 import styles from "./CTA.module.css";
 
 export default function CTA() {
-  const containerRef = useReveal();
-
   return (
-    <section className={styles.ctaSection} id="contact" ref={containerRef}>
+    <section className={styles.ctaSection} id="contact">
       <div className="container">
-        <div className={`${styles.ctaCard} reveal`} data-reveal>
+        <div className={styles.ctaCard} data-aos="zoom-in">
           <h2>Ready to put your business on signal?</h2>
           <p>
             Tell us what you need — a website, a campaign, or the full
