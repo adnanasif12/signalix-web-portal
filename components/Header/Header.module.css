@@ -58,9 +58,6 @@
   100% {
     opacity: 1;
   }
-  50% {
-    opacity: 0.35;
-  }
 }
 
 .navLinks {
@@ -122,6 +119,9 @@
 
 @media (max-width: 640px) {
   .nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
     padding: 14px 16px;
     position: relative;
   }
@@ -142,6 +142,33 @@
 
   .logo img:last-child {
     margin-left: -62px;
+  }
+
+  .logo {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .logo {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(calc(-50% + 18px), -50%);
+  }
+
+  .navCta {
+    width: auto;
+  }
+
+  .logo {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: auto;
+  }
+
+  .navCta {
+    display: contents;
   }
 
   .navLinks {
@@ -174,10 +201,18 @@
   }
 
   .navQuote {
-    display: none;
+    display: inline-flex;
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    padding: 11px 14px;
+    font-size: 0.78rem;
   }
 
   .menuToggle {
     display: block;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
   }
 }

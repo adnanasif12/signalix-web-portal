@@ -40,10 +40,15 @@
 
 @media (max-width: 640px) {
   .ctaCard {
-    padding: 44px 24px;
+    padding: 44px 16px;
+  }
+
+  .ctaCard h2 {
+    font-size: 2rem;
+    line-height: 1.12;
   }
 
   .ctaBtns .btn {
-    padding: 13px 24px;
+    padding: 13px 20px;
   }
 }

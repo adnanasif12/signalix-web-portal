@@ -11,7 +11,32 @@
   padding: 14px;
   border-radius: 100px;
   box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.5);
+  animation: whatsappAttention 6s ease-in-out infinite;
   transition: transform 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease;
+}
+
+@keyframes whatsappAttention {
+  0%,
+  72%,
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.5);
+  }
+
+  76% {
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 14px 34px -8px rgba(37, 211, 102, 0.8);
+  }
+
+  80% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.5);
+  }
+
+  84% {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 13px 32px -8px rgba(37, 211, 102, 0.7);
+  }
 }
 
 .fab:hover {

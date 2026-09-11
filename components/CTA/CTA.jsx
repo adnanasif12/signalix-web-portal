@@ -17,7 +17,7 @@ export default function CTA() {
               Email Us →
             </a>
             <a
-              href="https://wa.me/8801636028679?text=Hi%20Signalix%2C%20I%27m%20interested%20in%20your%20services"
+              href="https://wa.me/8801929829031?text=Hi%20Signalix%2C%20I%27m%20interested%20in%20your%20services"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-ghost"

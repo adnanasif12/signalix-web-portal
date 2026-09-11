@@ -40,14 +40,19 @@ export default function Footer() {
           <div className={styles.footerCol}>
             <h5>Get in Touch</h5>
             <a href="mailto:hello@signalix.agency">hello@signalix.agency</a>
-            <a href="tel:+8801636028679">+880 1636-028679</a>
+            <a href="tel:+8801929829031">+880 1929-829031</a>
           </div>
         </div>
 
         <div className={styles.footerBottom}>
           <span>© 2026 Signalix. All rights reserved.</span>
           <div className={styles.socials}>
-            <a href="#" aria-label="Facebook">
+            <a
+              href="https://www.facebook.com/profile.php?id=61594374717613"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
               <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg>
