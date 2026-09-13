@@ -2,6 +2,7 @@ import styles from "./SelectedWork.module.css";
 
 const ACCENTS = ["var(--cyan)", "var(--coral)", "var(--amber)", "var(--violet)", "var(--lime)"];
 const DEFAULT_PROJECT_URL = "https://signalix.agency";
+const DEFAULT_PROJECT_IMAGE = "/images/website-landing-.png";
 
 /**
  * Placeholder shown only when no published projects exist yet in the
@@ -57,7 +58,10 @@ export default function SelectedWork({ projects }) {
               className={styles.card}
               data-aos="fade-left"
               data-aos-delay={i * 100}
-              style={{ "--accent": ACCENTS[i % ACCENTS.length] }}
+              style={{
+                "--accent": ACCENTS[i % ACCENTS.length],
+                "--project-image": `url("${p.image_url || DEFAULT_PROJECT_IMAGE}")`,
+              }}
             >
               <div className={styles.thumb} />
               <div className={styles.body}>
