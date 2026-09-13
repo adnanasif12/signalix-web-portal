@@ -1,6 +1,7 @@
 import styles from "./SelectedWork.module.css";
 
 const ACCENTS = ["var(--cyan)", "var(--coral)", "var(--amber)", "var(--violet)", "var(--lime)"];
+const DEFAULT_PROJECT_URL = "https://signalix.agency";
 
 /**
  * Placeholder shown only when no published projects exist yet in the
@@ -14,6 +15,7 @@ const PLACEHOLDER_PROJECTS = [
     market: "Market / Country",
     service_provided: "Service Provided",
     result_summary: "Short, honest result (e.g. what changed for the client)",
+    project_url: DEFAULT_PROJECT_URL,
   },
   {
     project_name: "Project Name",
@@ -21,6 +23,7 @@ const PLACEHOLDER_PROJECTS = [
     market: "Market / Country",
     service_provided: "Service Provided",
     result_summary: "Short, honest result (e.g. what changed for the client)",
+    project_url: DEFAULT_PROJECT_URL,
   },
   {
     project_name: "Project Name",
@@ -28,6 +31,7 @@ const PLACEHOLDER_PROJECTS = [
     market: "Market / Country",
     service_provided: "Service Provided",
     result_summary: "Short, honest result (e.g. what changed for the client)",
+    project_url: DEFAULT_PROJECT_URL,
   },
 ];
 
@@ -65,7 +69,12 @@ export default function SelectedWork({ projects }) {
                   <span>{p.service_provided}</span>
                 </div>
                 <p className={styles.result}>{p.result_summary}</p>
-                <a href={p.project_url || "#contact"} className={styles.link}>
+                <a
+                  href={p.project_url || DEFAULT_PROJECT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.link}
+                >
                   View Project →
                 </a>
               </div>
