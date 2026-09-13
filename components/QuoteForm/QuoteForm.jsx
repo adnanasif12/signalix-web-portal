@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { supabase } from "../../lib/supabaseClient";
 import styles from "./QuoteForm.module.css";
 
 const SERVICE_OPTIONS = [
@@ -28,6 +27,7 @@ const EMPTY_FORM = {
   service: SERVICE_OPTIONS[0],
   budget: BUDGET_OPTIONS[0],
   description: "",
+  website: "", // honeypot — real visitors leave this blank
 };
 
 export default function QuoteForm() {
@@ -46,24 +46,30 @@ export default function QuoteForm() {
     setSubmitting(true);
     setSaveError(false);
 
-    // Save the lead to Supabase so it shows up in the admin panel.
+    // Send the lead to our own /api/leads route instead of talking to
+    // Supabase directly from the browser. The server validates it and
+    // writes to the database using a secret key that never reaches
+    // the client — the browser never sees database credentials.
     let hadError = false;
-    if (supabase) {
-      const { error } = await supabase.from("leads").insert({
-        name: form.name,
-        company: form.company,
-        country: form.country,
-        contact: form.contact,
-        service: form.service,
-        budget: form.budget,
-        message: form.description,
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          company: form.company,
+          country: form.country,
+          contact: form.contact,
+          service: form.service,
+          budget: form.budget,
+          message: form.description,
+          website: form.website, // honeypot
+        }),
       });
-      if (error) {
-        hadError = true;
-        console.error("Failed to save lead:", error.message);
-      }
-    } else {
+      if (!res.ok) hadError = true;
+    } catch (err) {
       hadError = true;
+      console.error("Failed to reach /api/leads:", err);
     }
 
     if (hadError) {
@@ -101,6 +107,17 @@ export default function QuoteForm() {
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
+      {/* Honeypot — hidden from real visitors, bots tend to fill every field */}
+      <input
+        type="text"
+        name="website"
+        value={form.website}
+        onChange={handleChange}
+        className={styles.honeypot}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+      />
       <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="name">Name</label>

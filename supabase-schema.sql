@@ -71,11 +71,11 @@ alter table portfolio_projects enable row level security;
 alter table services enable row level security;
 alter table testimonials enable row level security;
 
--- Public (anon) can submit a lead from the website form
-create policy "Public can insert leads"
-  on leads for insert
-  to anon
-  with check (true);
+-- NOTE: Leads are now inserted only through the app's own /api/leads
+-- route, using the secret service_role key (server-side, never exposed
+-- to the browser). We intentionally do NOT grant the public "anon" role
+-- insert access to this table anymore — see disable-public-lead-insert.sql
+-- if you're upgrading an existing project that still has that policy.
 
 -- Public can read published portfolio/services/testimonials
 create policy "Public can read published portfolio"
