@@ -1,8 +1,23 @@
+import { useState } from "react";
 import styles from "./SelectedWork.module.css";
 
 const ACCENTS = ["var(--cyan)", "var(--coral)", "var(--amber)", "var(--violet)", "var(--lime)"];
 const DEFAULT_PROJECT_URL = "https://signalix.agency";
-const DEFAULT_PROJECT_IMAGE = "/images/website-landing-.png";
+
+function getMockupVariant(index) {
+  return ["teal", "pink", "amber", "indigo", "green"][index % 5];
+}
+
+// Free, no-API-key screenshot service — pass any live URL and it returns
+// a rendered screenshot of that page. No manual thumbnail upload needed:
+// just save a project_url in the admin panel and this generates the
+// preview automatically, the same way Vercel shows a live deployment
+// thumbnail.
+function screenshotUrl(targetUrl) {
+  return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(
+    targetUrl
+  )}?w=800&h=500`;
+}
 
 /**
  * Placeholder shown only when no published projects exist yet in the
@@ -16,7 +31,7 @@ const PLACEHOLDER_PROJECTS = [
     market: "Market / Country",
     service_provided: "Service Provided",
     result_summary: "Short, honest result (e.g. what changed for the client)",
-    project_url: DEFAULT_PROJECT_URL,
+    isPlaceholder: true,
   },
   {
     project_name: "Project Name",
@@ -24,7 +39,7 @@ const PLACEHOLDER_PROJECTS = [
     market: "Market / Country",
     service_provided: "Service Provided",
     result_summary: "Short, honest result (e.g. what changed for the client)",
-    project_url: DEFAULT_PROJECT_URL,
+    isPlaceholder: true,
   },
   {
     project_name: "Project Name",
@@ -32,9 +47,64 @@ const PLACEHOLDER_PROJECTS = [
     market: "Market / Country",
     service_provided: "Service Provided",
     result_summary: "Short, honest result (e.g. what changed for the client)",
-    project_url: DEFAULT_PROJECT_URL,
+    isPlaceholder: true,
   },
 ];
+
+// Renders either a live screenshot of the project's URL, or a manually
+// set image_url, or — if neither is available/working — the illustrated
+// mockup fallback so the grid never shows a broken image.
+function ProjectThumb({ project, variant }) {
+  const [failed, setFailed] = useState(false);
+
+  const manualImage = project.image_url;
+  const canAutoScreenshot = !project.isPlaceholder && project.project_url;
+
+  const src =
+    manualImage || (canAutoScreenshot ? screenshotUrl(project.project_url) : null);
+
+  if (src && !failed) {
+    return (
+      <div className={`${styles.thumb} ${styles[variant]}`}>
+        <img
+          src={src}
+          alt={`${project.project_name} — live preview`}
+          className={styles.thumbImage}
+          loading="lazy"
+          onError={() => setFailed(true)}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className={`${styles.thumb} ${styles[variant]}`}>
+      <div className={styles.mockupWindow}>
+        <div className={styles.mockupTopbar}>
+          <span className={styles.dot} />
+          <span className={styles.dot} />
+          <span className={styles.dot} />
+        </div>
+        <div className={styles.mockupBody}>
+          <div className={styles.mockupSidebar}>
+            <span className={styles.sidebarBlock} />
+            <span className={styles.sidebarBlock} />
+            <span className={styles.sidebarBlock} />
+          </div>
+          <div className={styles.mockupContent}>
+            <div className={styles.mockupHeader} />
+            <div className={styles.mockupCards}>
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className={styles.mockupChart} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function SelectedWork({ projects }) {
   const items = projects && projects.length > 0 ? projects : PLACEHOLDER_PROJECTS;
@@ -60,10 +130,9 @@ export default function SelectedWork({ projects }) {
               data-aos-delay={i * 100}
               style={{
                 "--accent": ACCENTS[i % ACCENTS.length],
-                "--project-image": `url("${p.image_url || DEFAULT_PROJECT_IMAGE}")`,
               }}
             >
-              <div className={styles.thumb} />
+              <ProjectThumb project={p} variant={getMockupVariant(i)} />
               <div className={styles.body}>
                 <span className={styles.industry}>{p.industry}</span>
                 <h3>{p.project_name}</h3>
