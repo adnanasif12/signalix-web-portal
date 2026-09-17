@@ -22,6 +22,7 @@ export default function LeadsPage() {
   const supabase = createClient();
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
   const [filter, setFilter] = useState("all");
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -31,11 +32,16 @@ export default function LeadsPage() {
 
   async function loadLeads() {
     setLoading(true);
-    const { data } = await supabase
+    setLoadError("");
+    const { data, error } = await supabase
       .from("leads")
       .select("*")
       .order("created_at", { ascending: false });
     setLeads(data || []);
+    if (error) {
+      console.error("Failed to load leads:", error.message);
+      setLoadError(`Could not load leads: ${error.message}`);
+    }
     setLoading(false);
   }
 
@@ -83,6 +89,17 @@ export default function LeadsPage() {
       <div className="card mt-4 overflow-hidden">
         {loading ? (
           <p className="p-6 text-center text-sm text-slate-500">Loading...</p>
+        ) : loadError ? (
+          <div className="p-6 text-center">
+            <p className="text-sm text-red-300">{loadError}</p>
+            <button
+              type="button"
+              onClick={loadLeads}
+              className="btn-secondary mt-3"
+            >
+              Try again
+            </button>
+          </div>
         ) : filteredLeads.length === 0 ? (
           <p className="p-6 text-center text-sm text-slate-500">
             No leads found.

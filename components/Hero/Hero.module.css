@@ -92,6 +92,7 @@
   height: 64px;
   object-fit: cover;
   object-position: center;
+  transform: translateX(-38%);
 }
 
 .h1 {

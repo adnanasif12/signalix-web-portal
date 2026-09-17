@@ -11,11 +11,17 @@ export default function Footer() {
               <Image
                 src="/images/image2.png"
                 alt="Signalix"
-                width={24}
-                height={24}
+                width={28}
+                height={28}
                 priority
               />
-              <span>Signalix</span>
+              <Image
+                src="/images/image1.png"
+                alt=""
+                width={180}
+                height={41}
+                priority
+              />
             </a>
             <p>
               A full-service IT &amp; digital agency helping small businesses
@@ -39,7 +45,7 @@ export default function Footer() {
           </div>
           <div className={styles.footerCol}>
             <h5>Get in Touch</h5>
-            <a href="mailto:hello@signalix.agency">hello@signalix.agency</a>
+            <a href="mailto:ashibadnan42@gmail.com">ashibadnan42@gmail.com</a>
             <a href="tel:+8801929829031">+880 1929-829031</a>
           </div>
         </div>

@@ -59,6 +59,17 @@ create table if not exists testimonials (
   is_published boolean default true
 );
 
+-- 5. FINANCE (wallet income and business expenses)
+create table if not exists finance_transactions (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz default now(),
+  transaction_date date not null default current_date,
+  type text not null check (type in ('income', 'expense')),
+  category text not null,
+  amount numeric(12, 2) not null check (amount > 0),
+  description text
+);
+
 -- ============================================
 -- Row Level Security — lock tables down.
 -- Public site can INSERT leads (via the quote form)
@@ -70,6 +81,7 @@ alter table leads enable row level security;
 alter table portfolio_projects enable row level security;
 alter table services enable row level security;
 alter table testimonials enable row level security;
+alter table finance_transactions enable row level security;
 
 -- NOTE: Leads are now inserted only through the app's own /api/leads
 -- route, using the secret service_role key (server-side, never exposed
@@ -94,6 +106,8 @@ create policy "Admins full access services"
   on services for all to authenticated using (true) with check (true);
 create policy "Admins full access testimonials"
   on testimonials for all to authenticated using (true) with check (true);
+create policy "Admins full access finance"
+  on finance_transactions for all to authenticated using (true) with check (true);
 
 -- ============================================
 -- Seed the 8 existing services so the panel isn't empty on day 1

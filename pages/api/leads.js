@@ -1,4 +1,5 @@
 import { supabaseAdmin } from "../../lib/supabaseAdmin";
+import { sendLeadEmail } from "../../lib/sendLeadEmail";
 
 const REQUIRED_FIELDS = ["name", "country", "contact", "service"];
 
@@ -32,14 +33,6 @@ export default async function handler(req, res) {
 
   const body = req.body || {};
 
-  // Honeypot: a hidden field ("website") that real visitors never see or
-  // fill in. Bots that auto-fill every input on a form will fill this
-  // one too — if it has a value, silently drop the submission instead
-  // of saving it, but still tell the bot it "succeeded" so it moves on.
-  if (body.website) {
-    return res.status(200).json({ success: true });
-  }
-
   for (const field of REQUIRED_FIELDS) {
     if (!body[field] || !String(body[field]).trim()) {
       return res
@@ -65,5 +58,15 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "Failed to save request" });
   }
 
-  return res.status(200).json({ success: true });
+  try {
+    const emailId = await sendLeadEmail(lead);
+    return res.status(200).json({ success: true, emailId });
+  } catch (emailError) {
+    // The database record is the source of truth; email delivery must not
+    // make a valid customer submission look like it failed.
+    console.error("Failed to send lead email:", emailError.message);
+    return res.status(500).json({
+      error: "Request saved, but email notification is not configured",
+    });
+  }
 }

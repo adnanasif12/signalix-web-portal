@@ -13,8 +13,9 @@
 
 ### ১. Supabase বানাও
 1. [supabase.com](https://supabase.com) এ ফ্রি account + নতুন project বানাও
-2. **SQL Editor** এ গিয়ে `supabase-schema.sql` এর পুরো content paste করে **Run** করো (৪টা table বানাবে + তোমার ৮টা service auto-fill করবে)
-3. **Authentication → Users → Add user** থেকে নিজের admin login (email/password) বানাও, **Auto Confirm User** টিক দিয়ো
+2. **SQL Editor** এ গিয়ে `supabase-schema.sql` এর পুরো content paste করে **Run** করো (content tables বানাবে + তোমার ৮টা service auto-fill করবে)
+3. Finance চালু করতে `finance-migration.sql`-এর পুরো content SQL Editor-এ paste করে **Run** করো। এটি `finance_transactions` table এবং admin policy তৈরি করবে।
+4. **Authentication → Users → Add user** থেকে নিজের admin login (email/password) বানাও, **Auto Confirm User** টিক দিয়ো
 
 ### ২. Environment variables বসাও
 Supabase **Settings → API** থেকে Project URL আর anon public key কপি করো।

@@ -13,7 +13,7 @@ export default function CTA() {
             Free initial consultation. No obligation.
           </p>
           <div className={styles.ctaBtns}>
-            <a href="mailto:hello@signalix.agency" className="btn btn-primary">
+            <a href="mailto:ashibadnan42@gmail.com" className="btn btn-primary">
               Email Us →
             </a>
             <a

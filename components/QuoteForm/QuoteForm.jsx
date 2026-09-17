@@ -27,7 +27,6 @@ const EMPTY_FORM = {
   service: SERVICE_OPTIONS[0],
   budget: BUDGET_OPTIONS[0],
   description: "",
-  website: "", // honeypot — real visitors leave this blank
 };
 
 export default function QuoteForm() {
@@ -63,10 +62,13 @@ export default function QuoteForm() {
           service: form.service,
           budget: form.budget,
           message: form.description,
-          website: form.website, // honeypot
         }),
       });
-      if (!res.ok) hadError = true;
+      if (!res.ok) {
+        hadError = true;
+        const data = await res.json().catch(() => null);
+        if (data?.error) console.error(data.error);
+      }
     } catch (err) {
       hadError = true;
       console.error("Failed to reach /api/leads:", err);
@@ -90,9 +92,11 @@ export default function QuoteForm() {
         "Project Description:",
         form.description,
       ].join("\n");
-      window.location.href = `mailto:hello@signalix.agency?subject=${encodeURIComponent(
+      window.location.href = `mailto:ashibadnan42@gmail.com?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(body)}`;
+      setSubmitting(false);
+      return;
     }
 
     // Clear the form and show a confirmation card so the visitor gets
@@ -107,17 +111,6 @@ export default function QuoteForm() {
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
-      {/* Honeypot — hidden from real visitors, bots tend to fill every field */}
-      <input
-        type="text"
-        name="website"
-        value={form.website}
-        onChange={handleChange}
-        className={styles.honeypot}
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-      />
       <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="name">Name</label>
@@ -211,7 +204,7 @@ export default function QuoteForm() {
       </button>
       <p className={styles.note}>
         {saveError
-          ? "We couldn't save your request automatically — your email app should open instead so nothing is lost."
+          ? "Your request was saved, but email notification is unavailable — your email app should open instead."
           : "Your request goes straight to our team — no email app will open."}
       </p>
       </form>

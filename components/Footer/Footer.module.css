@@ -4,19 +4,26 @@
 }
 
 .logo {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 2px;
 }
 
 .logo img {
-  width: 24px;
-  height: 24px;
+  width: 240px;
+  height: 55px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.logo img:first-child {
+  width: 32px;
+  height: 32px;
   object-fit: contain;
+}
+
+.logo img:last-child {
+  margin-left: -98px;
 }
 
 .footerTop {
@@ -109,6 +116,20 @@
 }
 
 @media (max-width: 640px) {
+  .logo img {
+    width: 180px;
+    height: 42px;
+  }
+
+  .logo img:first-child {
+    width: 28px;
+    height: 28px;
+  }
+
+  .logo img:last-child {
+    margin-left: -76px;
+  }
+
   .footerTop {
     grid-template-columns: 1fr;
   }
